@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "prettify": "prettier -l --write \"**/*.js\"",
-    "test": "jest",
     "dev": "nodemon src/index.js"
   },
   "dependencies": {
@@ -13,7 +12,8 @@
     "mysql2": "^2.3.3",
     "sqlite3": "^5.1.2",
     "uuid": "^9.0.0",
-    "wait-port": "^1.0.4"
+    "wait-port": "^1.0.4",
+    "yarn": "^1.22.19"
   },
   "resolutions": {
     "ansi-regex": "5.0.1"
