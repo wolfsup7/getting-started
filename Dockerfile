@@ -1,6 +1,6 @@
 # Install the base requirements for the app.
 # This stage is to support development.
-FROM --platform=$BUILDPLATFORM python:alpine AS base
+FROM --platform=$BUILDPLATFORM python:alpine@sha256:84630610c68e7c97384bc6e10f5490ab7b8398c30cdfffefa139ae20c3407cda AS base
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
