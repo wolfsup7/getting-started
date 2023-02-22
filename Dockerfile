@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-FROM --platform=$BUILDPLATFORM node:18-alpine AS app-base
+FROM --platform=$BUILDPLATFORM node:18-alpine@sha256:d3ab70536ffd47d5f88c7cc5289eaa3abf5132ad27e4e5a73d904a21f642f5f4 AS app-base
 WORKDIR /app
 COPY app/package.json app/yarn.lock ./
 COPY app/spec ./spec
