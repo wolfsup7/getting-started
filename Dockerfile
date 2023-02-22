@@ -1,11 +1,11 @@
 # Install the base requirements for the app.
 # This stage is to support development.
-FROM --platform=$BUILDPLATFORM python:alpine AS base
+FROM --platform=$BUILDPLATFORM python:alpine@sha256:84630610c68e7c97384bc6e10f5490ab7b8398c30cdfffefa139ae20c3407cda AS base
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-FROM --platform=$BUILDPLATFORM node:18-alpine AS app-base
+FROM --platform=$BUILDPLATFORM node:18-alpine@sha256:045b1a1c90bdfd8fcaad0769922aa16c401e31867d8bf5833365b0874884bbae AS app-base
 WORKDIR /app
 COPY app/package.json app/yarn.lock ./
 COPY app/spec ./spec
@@ -35,6 +35,6 @@ RUN mkdocs build
 
 # Extract the static content from the build
 # and use a nginx image to serve the content
-FROM --platform=$TARGETPLATFORM nginx:alpine
+FROM --platform=$TARGETPLATFORM nginx:alpine@sha256:6f94b7f4208b5d5391246c83a96246ca204f15eaf7e636cefda4e6348c8f6101
 COPY --from=app-zip-creator /app.zip /usr/share/nginx/html/assets/app.zip
 COPY --from=build /app/site /usr/share/nginx/html
